@@ -26,7 +26,7 @@ avr_size = 'avr-size $SOURCE -C -d --mcu=%s' % (mmcu)
 
 prog_command = ''
 if programmer == 'usbtiny':
-    pass
+    prog_command = ('/usr/bin/avrdude -c usbtiny -p %s -U flash:w:%s.hex:i' % (mcu, build_target))
 elif programmer == 'usbasp':
     prog_command = ('/usr/bin/avrdude -c usbasp -p %s -U flash:w:%s.hex:i' % (mcu, build_target))
 elif programmer == 'arduino':
